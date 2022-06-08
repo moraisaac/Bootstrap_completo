@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import logocarrito from './carrito.svg';
+import logocarrito from '../../Imagenes/carrito.svg';
+import logoecommerce from '../../Imagenes/Logo-Rectangulo.png'
 
 const NavBar = () => {
     return (
@@ -7,9 +8,8 @@ const NavBar = () => {
             <Container className="d-flex flex-row mx-5">
                 <Navbar.Brand href="#home">
                     <img
-                        src=""
-                        width="30"
-                        height="30"
+                        src={logoecommerce}
+                        width="150px"
                         className="d-inline-block align-top mx-5"
                         alt="Logo"
                     />
@@ -29,13 +29,16 @@ const NavBar = () => {
                         <Nav.Link href="#link" className=''>Contacto</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <img
-                    src={logocarrito}
-                    width="30"
-                    height="30"
-                    className="align-top mx-5 justify-content-between"
-                    alt=""
-                />
+                <Nav.Link href='#carrito'>
+                    <img
+                        src={logocarrito}
+                        width="30"
+                        height="30"
+                        className="align-top mx-5 justify-content-between"
+                        alt=""
+                    />
+                </Nav.Link>
+
             </Container>
         </Navbar>
     )
