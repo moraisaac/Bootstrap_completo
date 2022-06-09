@@ -2,12 +2,14 @@ import ItemCount from "../ItemCount/ItemCount"
 
 
 const ItemListContainer = ({param1}) => {
-    const estock = 5;
-    const inicial = 1;
+    function onAdd (count) {
+        console.log(count);
+    }
+
     return (
         <>
             <div> {param1} </div>
-            <ItemCount/>
+            <ItemCount stock = '10' initial = '1' onAdd = {onAdd}/>
         </>
 
     )

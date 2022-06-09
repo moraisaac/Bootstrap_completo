@@ -1,4 +1,4 @@
-import logocarrito from '../Cart/carrito.svg';
+import logocarrito from '../../Imagenes/carrito.svg';
 
 const Cart = () => {
     return (

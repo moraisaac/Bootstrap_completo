@@ -1,9 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 
-function ItemCount() {
-    const stock = 10;
-    const initial = 1;
+function ItemCount( {stock, initial, onAdd} ) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -17,20 +17,23 @@ function ItemCount() {
             setCount(count - 1);
         }
     }
+    function imprimirProd() {
+        onAdd(count);
+    }
 
     useEffect(() => {
         document.title = `Compraste ${count} productos`;
     });
 
     return (
-        <div>
-            <button onClick={restarContador}> - </button>
+        <ButtonGroup size='sm' className='mb-2'>
+            <Button className='mx-2' onClick={restarContador}> - </Button>
             <h4> {count} Productos</h4>
-            <button onClick={sumarContador}> + </button>
-            <button onClick={console.log(`Compraste ${count} productos`)}>
+            <Button className='mx-2' onClick={sumarContador}> + </Button>
+            <Button className='mx-2' onClick={imprimirProd}>
                 Comprar
-            </button>
-        </div>
+            </Button>
+        </ButtonGroup>
     );
 }
 

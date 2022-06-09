@@ -1,6 +1,7 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import logocarrito from '../../Imagenes/carrito.svg';
 import logoecommerce from '../../Imagenes/Logo-Rectangulo.png'
+import Cart from '../Cart/Cart';
 
 const NavBar = () => {
     return (
@@ -29,16 +30,7 @@ const NavBar = () => {
                         <Nav.Link href="#link" className=''>Contacto</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Nav.Link href='#carrito'>
-                    <img
-                        src={logocarrito}
-                        width="30"
-                        height="30"
-                        className="align-top mx-5 justify-content-between"
-                        alt=""
-                    />
-                </Nav.Link>
-
+                <Cart />
             </Container>
         </Navbar>
     )
