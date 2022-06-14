@@ -15,7 +15,6 @@ function App() {
         <>
             <NavBar />
             <ItemListContainer />
-            <ItemCount initial={1} stock={10} onAdd={onAdd} />
             <ItemDetailConatainer />
         </>
     )

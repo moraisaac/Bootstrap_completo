@@ -20,6 +20,8 @@
 import { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import { getFetch } from "../../helpers/getFetch";
+import { Spinner } from 'react-bootstrap';
+import '../ListContainer/ItemListContainer.css';
 
 
 const ItemListContainer = () => {
@@ -33,7 +35,6 @@ const ItemListContainer = () => {
                 setLoading(false)
             })
             .catch(err => console.log(err))
-        // .finally(()=> )
     }, [])
 
 
@@ -41,9 +42,15 @@ const ItemListContainer = () => {
     return (
         <div>
             {loading ?
-                <h1>Cargando...</h1>
+                <div className="mx-5 my-5 cargando d-flex justify-content-center align-items-center">
+                    <Spinner animation="border" variant="primary" className="mx-5"/>
+                    <Spinner animation="border" variant="secondary" className="mx-5"/>
+                    <Spinner animation="border" variant="success" className="mx-5"/>
+                    <Spinner animation="border" variant="danger" className="mx-5"/>
+                    <Spinner animation="border" variant="warning" className="mx-5"/>
+                </div>
                 :
-                <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                <div className="my-5 mx-5 d-flex flex-wrap justify-content-around">
                     <ItemList productos={productos} />
                 </div>
             }

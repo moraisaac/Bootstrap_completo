@@ -31,7 +31,7 @@ function ItemCount( {stock, initial, onAdd} ) {
             <h4> {count} Productos</h4>
             <Button className='mx-2' onClick={sumarContador}> + </Button>
             <Button className='mx-2' onClick={imprimirProd}>
-                Comprar
+                <h4>Comprar</h4>
             </Button>
         </ButtonGroup>
     );
