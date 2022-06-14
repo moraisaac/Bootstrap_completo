@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "Globo luz",
+        "precio": 80,
+        "imagen": "./Imagenes/globoluz.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Globo neon",
+        "precio": 75,
+        "imagen": "./Imagenes/Globoneon.jp"
+    },
+    {
+        "id": 3,
+        "nombre": "Globo",
+        "precio": 26,
+        "imagen": "./Imagenes/Globo.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Letreros",
+        "precio": 50,
+        "imagen": "./Imagenes/letrero.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Foami con diamantina",
+        "precio": 36,
+        "imagen": "./Imagenes/foamidiamantado.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Payaso",
+        "precio": 40,
+        "imagen": "./Imagenes/payaso.jpg"
+    }
+]
