@@ -1,17 +1,21 @@
+import React from "react";
 import { useState, useEffect } from "react"
 import ItemDetail from "../../components/ItemDetail/ItemDetail"
-import { getFetchOne } from "../../helpers/getFetch"
+import { getFetch } from "../../helpers/getFetch"
 import { Spinner } from 'react-bootstrap';
 import '../ListContainer/ItemListContainer.css';
+import { useParams } from "react-router-dom";
 
 const ItemDetailConatainer = () => {
-    const [producto, setProducto] = useState({})
+    const [productos, setProductos] = useState({})
     const [loading, setLoading] = useState(true)
 
+    const {id} = useParams()
+
     useEffect(() => {
-        getFetchOne()
+        getFetch()
             .then((resp) =>{
-                setProducto(resp)
+                setProductos(resp.find(prod => prod.id === id))
                 setLoading(false)
             } )
             .catch(err => console.log(err))
@@ -27,7 +31,7 @@ const ItemDetailConatainer = () => {
                 </div>
                 :
                 <div className="my-5 mx-5 d-flex flex-wrap justify-content-around">
-                    < ItemDetail producto = { producto } />
+                    < ItemDetail prod = { productos } />
                 </div>
             }
         </div>

@@ -1,3 +1,4 @@
+import React from 'react';
 import logocarrito from '../../Imagenes/carrito.svg';
 
 const Cart = () => {

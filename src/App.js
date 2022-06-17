@@ -1,21 +1,25 @@
+import React from 'react';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Nav/NavBar';
 import ItemListContainer from './components/ListContainer/ItemListContainer';
-import ItemCount from './components/ItemCount/ItemCount';
-import ItemDetailConatainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Cart from './components/Cart/Cart';
+
 
 function App() {
 
-    const onAdd = (cant) => {
-        console.log(cant)
-    }
-
     return (
         <>
-            <NavBar />
-            <ItemListContainer />
-            <ItemDetailConatainer />
+            <BrowserRouter>
+                <NavBar />
+                <Routes>
+                    <Route index path="/" element={<ItemListContainer />} />
+                    <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+                    <Route path="/cart" element={<Cart />} />
+                </Routes>
+            </BrowserRouter>
         </>
     )
 }

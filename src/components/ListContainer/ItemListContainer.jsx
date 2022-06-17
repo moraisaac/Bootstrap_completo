@@ -1,41 +1,32 @@
-// import ItemCount from "../ItemCount/ItemCount"
-
-
-// const ItemListContainer = ({param1}) => {
-//     function onAdd (count) {
-//         console.log(count);
-//     }
-
-//     return (
-//         <>
-//             <div> {param1} </div>
-//             <ItemCount stock = '10' initial = '1' onAdd = {onAdd}/>
-//         </>
-
-//     )
-// }
-
-// export default ItemListContainer
-
+import React from "react";
 import { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import { getFetch } from "../../helpers/getFetch";
 import { Spinner } from 'react-bootstrap';
 import '../ListContainer/ItemListContainer.css';
+import { useParams } from "react-router-dom";
 
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const {categoriaId} = useParams()
+    
     useEffect(() => {
-        getFetch()// llamada a la api
+        if(categoriaId){
+            getFetch()
             .then((resp) => {
-                setProductos(resp)
+                setProductos(resp.filter(producto => producto.categoria === categoriaId))
                 setLoading(false)
-            })
+            }).catch(err => console.log(err))
+        }else{
+            getFetch()
+            .then((resp) => setProductos(resp))
             .catch(err => console.log(err))
-    }, [])
+            .finally(()=> setLoading(false))
+        }
+    }, [categoriaId])
 
 
 
