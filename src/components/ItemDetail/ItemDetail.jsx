@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Card } from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
+import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad'
 
 const ItemDetail = ({ prod }) => {
     function onAdd(count) {

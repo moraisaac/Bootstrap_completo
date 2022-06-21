@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
 
-function ItemCount( {stock, initial, onAdd} ) {
+function ItemCount({ stock, initial, onAdd }) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -21,18 +22,14 @@ function ItemCount( {stock, initial, onAdd} ) {
         onAdd(count);
     }
 
-    useEffect(() => {
-        document.title = `Compraste ${count} productos`;
-    });
-
     return (
         <ButtonGroup size='sm' className='mb-2'>
             <Button className='mx-2' onClick={restarContador}> - </Button>
             <h4> {count} Productos</h4>
             <Button className='mx-2' onClick={sumarContador}> + </Button>
-            <Button className='mx-2' onClick={imprimirProd}>
-                <h4>Comprar</h4>
-            </Button>
+            <div className='mx-2' onClick={imprimirProd}>
+                <Intercambiabilidad />
+            </div>
         </ButtonGroup>
     );
 }
