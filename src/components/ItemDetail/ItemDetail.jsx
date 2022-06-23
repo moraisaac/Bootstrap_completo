@@ -1,10 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Image, Card } from 'react-bootstrap';
+import { CartContext } from '../Cart/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
-import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad'
 
 const ItemDetail = ({ prod }) => {
-    function onAdd(count) {
+    const {AddToCart} = useContext(CartContext);
+    
+    const onAdd = (count) => {
+        AddToCart(prod, count);
         console.log(count);
     }
 

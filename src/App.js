@@ -6,56 +6,27 @@ import NavBar from './components/Nav/NavBar';
 import ItemListContainer from './components/ListContainer/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from './components/Cart/Cart';
-import ItemDetailConatainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import CartContextProvider from './components/Cart/CartContext';
+
 
 
 function App() {
 
     return (
-        <>
-            <BrowserRouter>
-                <NavBar />
-                <Routes>
-                    <Route index path="/" element={<ItemListContainer />} />
-                    <Route path="/detalle/:id" element={<ItemDetailConatainer/>}/>
-                    <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
-                    <Route path="/cart" element={<Cart />} />
-                </Routes>
-            </BrowserRouter>
-        </>
+            <CartContextProvider>
+                <BrowserRouter>
+                    <NavBar />
+                    <Routes>
+                        <Route index path="/" element={<ItemListContainer />} />
+                        <Route path="/detalle/:id" element={<ItemDetailContainer />} />
+                        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+                        <Route path="/cart" element={<Cart />} />
+                    </Routes>
+                </BrowserRouter>
+            </CartContextProvider>
     )
 }
 
 
 export default App
-
-
-
-
-
-// function App() {
-//   let contenido = 'Titulo List Container'
-
-//   return (
-//     <div className="App">
-//       <NavBar />
-//       <ItemListContainer param1 = {contenido} />
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;

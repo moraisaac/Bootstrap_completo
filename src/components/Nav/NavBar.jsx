@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Navbar, Container, Nav, NavDropdown, Link } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import logoecommerce from '../../Imagenes/Logo-Rectangulo.png'
-import Cart from '../Cart/Cart';
+import CartIcon from '../Cart/CartIcon';
 
 const NavBar = () => {
     return (
@@ -26,7 +26,7 @@ const NavBar = () => {
                     </Nav>
                 </Navbar.Collapse>
                 <NavLink to='/cart'>
-                    <Cart />
+                    <CartIcon />
                 </NavLink>
             </Container>
         </Navbar>

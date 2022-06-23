@@ -6,7 +6,7 @@ import { Spinner } from 'react-bootstrap';
 import '../ListContainer/ItemListContainer.css';
 import { useParams } from "react-router-dom";
 
-const ItemDetailConatainer = () => {
+const ItemDetailContainer = () => {
     const [productos, setProductos] = useState({})
     const [loading, setLoading] = useState(true)
 
@@ -38,4 +38,4 @@ const ItemDetailConatainer = () => {
 
     ) 
 }
-export default ItemDetailConatainer
+export default ItemDetailContainer
