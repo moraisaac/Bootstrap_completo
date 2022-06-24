@@ -14,17 +14,18 @@ import CartContextProvider from './components/Cart/CartContext';
 function App() {
 
     return (
-            <CartContextProvider>
-                <BrowserRouter>
-                    <NavBar />
-                    <Routes>
-                        <Route index path="/" element={<ItemListContainer />} />
-                        <Route path="/detalle/:id" element={<ItemDetailContainer />} />
-                        <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
-                        <Route path="/cart" element={<Cart />} />
-                    </Routes>
-                </BrowserRouter>
-            </CartContextProvider>
+        <CartContextProvider>
+            <BrowserRouter>
+                <NavBar />
+                <Routes>
+                    <Route index path="/" element={<ItemListContainer />} />
+                    <Route path="/detalle/:id" element={<ItemDetailContainer />} />
+                    <Route path="/categoria/:categoriaId" element={<ItemListContainer />} />
+                    <Route path="/cart" element={<Cart />} />
+                </Routes>
+            </BrowserRouter>
+        </CartContextProvider>
+
     )
 }
 
