@@ -1,16 +1,10 @@
 import React from 'react';
-import { useContext } from 'react';
 import { Image, Card } from 'react-bootstrap';
-import { CartContext } from '../Cart/CartContext';
-import ItemCount from '../ItemCount/ItemCount';
+import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
+
 
 const ItemDetail = ({ prod }) => {
-    const {AddToCart} = useContext(CartContext);
-    
-    const onAdd = (count) => {
-        AddToCart(prod, count);
-        console.log(count);
-    }
+
 
     return (
             <div className="d-flex flex-row aling-items-center mx-5">
@@ -27,7 +21,7 @@ const ItemDetail = ({ prod }) => {
                                 Optio modi nostrum accusamus illum nobis explicabo similique excepturi
                             </Card.Text>
                             <Card.Text> $ {prod.price}</Card.Text>
-                            <ItemCount initial={1} stock={prod.stock} onAdd={onAdd} />
+                            <Intercambiabilidad prod = {prod}/>
                         </Card.Body>
                         <Card.Footer className="text-muted">...</Card.Footer>
                     </Card>

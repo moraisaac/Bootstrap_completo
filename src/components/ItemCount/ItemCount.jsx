@@ -1,10 +1,9 @@
 
 import React, { useState } from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import Intercambiabilidad from '../Intercambiabilidad/Intercambiabilidad';
 
 
-function ItemCount({ stock, initial, onAdd }) {
+function ItemCount({ stock, initial, onAdd, handleInter }) {
 
     const [count, setCount] = useState(parseInt(initial));
 
@@ -18,9 +17,11 @@ function ItemCount({ stock, initial, onAdd }) {
             setCount(count - 1);
         }
     }
+
     function imprimirProd() {
         onAdd(count);
     }
+
 
     return (
         <ButtonGroup size='sm' className='mb-2'>
@@ -28,7 +29,12 @@ function ItemCount({ stock, initial, onAdd }) {
             <h4> {count} Productos</h4>
             <Button className='mx-2' onClick={sumarContador}> + </Button>
             <div className='mx-2' onClick={imprimirProd}>
-                <Intercambiabilidad />
+                <Button
+                    className="mx-2"
+                    onClick={handleInter}
+                >
+                    Agregar Al carrito
+                </Button>
             </div>
         </ButtonGroup>
     );

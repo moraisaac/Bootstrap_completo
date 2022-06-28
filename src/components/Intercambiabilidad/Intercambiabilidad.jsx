@@ -1,54 +1,43 @@
-import { Button } from 'react-bootstrap';
+
+import { useContext } from 'react';
+import { CartContext } from '../Cart/CartContext';
 import React from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
-
-const InputCount = () => {
-
-    return (
-        <>
-            <Link to='/cart' >
-                <button
-                    className="btn btn-outline-primary"
-                    onClick={() => console.log('Cart')}
-                >Ir al Cart o Terminar compra</button>
-            </Link>
-            <Link to='/' >
-                <button
-                    className="btn btn-outline-primary"
-                    onClick={() => console.log('Home')}
-                >Seguir comprando</button>
-            </Link>
-        </>
-    )
-}
+import InputCount from './InputCount';
+import ItemCount from '../ItemCount/ItemCount';
 
 
 
-const ButtonCount = ({ handleInter}) => {
+// const ButtonCount = ({ handleInter}) => {
 
-    return <Button
-        className="mx-2"
-        onClick={handleInter}
-    >
-        Agregar Al carrito
-    </Button>
+//     return <Button
+//         className="mx-2"
+//         onClick={handleInter}
+//     >
+//         Agregar Al carrito
+//     </Button>
 
-}
+// }
 
-const Intercambiabilidad = () => {
+const Intercambiabilidad = ({prod}) => {
     const [inputType, setInputType] = useState('button')
 
     const handleInter = () => {// onAdd
         setInputType('input')
     }
 
+    const {AddToCart} = useContext(CartContext);
+    
+    const onAdd = (count) => {
+        AddToCart(prod, count);
+        console.log(count);
+    }  
+
     return (
         <div>
             {
                 inputType === 'button' ?
-                    <ButtonCount handleInter={handleInter}/>
+                    <ItemCount handleInter={handleInter} initial={1} stock={prod.stock} onAdd={onAdd}/>
                     :
                     <InputCount />
             }
