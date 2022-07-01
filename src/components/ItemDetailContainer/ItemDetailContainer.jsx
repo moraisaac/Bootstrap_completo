@@ -5,21 +5,30 @@ import { getFetch } from "../../helpers/getFetch"
 import { Spinner } from 'react-bootstrap';
 import '../ListContainer/ItemListContainer.css';
 import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
-    const [productos, setProductos] = useState({})
+    const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-
-    const {id} = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-        getFetch()
-            .then((resp) =>{
-                setProductos(resp.find(prod => prod.id === id))
+        const db = getFirestore()
+        const queryItem = doc(db, 'productos', id)
+        getDoc(queryItem)
+            .then(resp =>
+                setProductos({id: resp.id, ...resp.data() }))
                 setLoading(false)
-            } )
-            .catch(err => console.log(err))
     }, [])
+
+    // useEffect(() => {
+    //     getFetch()
+    //         .then((resp) => {
+    //             setProductos(resp.find(prod => prod.id === id))
+    //             setLoading(false)
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
 
 
 
@@ -31,11 +40,11 @@ const ItemDetailContainer = () => {
                 </div>
                 :
                 <div className="my-5 mx-5 d-flex flex-wrap justify-content-around">
-                    < ItemDetail prod = { productos } />
+                    < ItemDetail prod={productos} />
                 </div>
             }
         </div>
 
-    ) 
+    )
 }
 export default ItemDetailContainer
