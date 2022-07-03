@@ -18,7 +18,6 @@ const CartContextProvider = ({children}) => {
     const DelItem = (id) =>{
         const items = cartList.filter((i) => i.prod.id !== id)
         setCartList(items)
-        return
     }
 
     const IconCart = () => {
@@ -26,7 +25,7 @@ const CartContextProvider = ({children}) => {
     }
 
     const PriceTotal = () => {
-        return cartList.reduce((acum, i) => acum + i.count * i.prod.precio, 0)
+        return cartList.reduce((acum, i) => acum + i.count * i.prod.price, 0)
     }
 
     const EmptyCart =() =>{
