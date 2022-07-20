@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import { CartContext } from "./CartContext";
 import CartItem from "./CartItem";
-import { addDoc, collection, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from "firebase/firestore"
 import GenerarOrden from '../GenerarOrden/GenerarOrden';
 
 const Cart = () => {

@@ -1,12 +1,12 @@
 import React from 'react'
-import { addDoc, collection, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from "firebase/firestore"
+import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from "firebase/firestore"
 import { useContext } from "react";
 import { CartContext } from '../Cart/CartContext';
 
 
 
 const GenerarOrden = () => {
-    const { cartList, EmptyCart, PriceTotal, IconCart } = useContext(CartContext)
+    const { cartList, EmptyCart, PriceTotal } = useContext(CartContext)
 
     async function generarOrd(e) {
         e.preventDefault()
@@ -18,11 +18,11 @@ const GenerarOrden = () => {
         orden.items = cartList.map(cartItem => {
             const id = cartItem.prod.id;
             const nombre = cartItem.prod.name;
-            const cantidad = cartItem.count;
+            const count = cartItem.count;
             const precio = cartItem.prod.price * cartItem.count;
 
 
-            return { id, nombre, precio, cantidad }
+            return { id, nombre, precio, count }
         })
         // insertar
         console.log(orden)
@@ -31,22 +31,22 @@ const GenerarOrden = () => {
         addDoc(orderCollection, orden)
             .then(resp => console.log(resp.id))
 
-        const queryCollectionStock = collection(db, 'items')
+    //     const queryCollectionStock = collection(db, 'productos')
 
-        const queryActulizarStock = await query(
-            queryCollectionStock, 
-            where(documentId(), 'in', cartList.map(it => it.id))       
-        )
+    //     const queryActulizarStock = query(
+    //         queryCollectionStock,
+    //         where(documentId(), 'in', cartList.map(it => it.id))
+    //     )
 
-        const batch = writeBatch(db)
+    //     const batch = writeBatch(db)
 
-        await getDocs(queryActulizarStock)
-            .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
-                stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
-            })))
-            .finally(() => EmptyCart())
+    //     await getDocs(queryActulizarStock)
+    //         .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
+    //             stock: res.data().stock - cartList.find(prod => prod.id === res.id).count
+    //         })))
+    //         .finally(() => EmptyCart())
 
-        batch.commit()
+    //     batch.commit()
 
     }
 
