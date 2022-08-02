@@ -5,7 +5,7 @@ import { CartContext } from '../Cart/CartContext';
 
 
 
-const GenerarOrden = () => {
+const generarOrden = () => {
     const { cartList, EmptyCart, PriceTotal } = useContext(CartContext)
 
     async function generarOrd(e) {
@@ -55,4 +55,4 @@ const GenerarOrden = () => {
     )
 }
 
-export default GenerarOrden
+export default generarOrden
