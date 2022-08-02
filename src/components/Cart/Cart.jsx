@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import { CartContext } from "./CartContext";
 import CartItem from "./CartItem";
-import GenerarOrden from '../GenerarOrden/GenerarOrden';
+import GenerarOrden from '../GenerarOrden/generarOrden';
 
 const Cart = () => {
     const { cartList, EmptyCart, PriceTotal, IconCart } = useContext(CartContext)
