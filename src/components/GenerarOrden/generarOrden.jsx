@@ -26,10 +26,13 @@ const generarOrden = () => {
         })
         // insertar
         console.log(orden)
+        alert("Gracias por tu compra");
         const db = getFirestore()
         const orderCollection = collection(db, 'orders')
         addDoc(orderCollection, orden)
             .then(resp => console.log(resp.id))
+        
+        .finally(() => EmptyCart())
 
     //     const queryCollectionStock = collection(db, 'productos')
 
@@ -44,7 +47,7 @@ const generarOrden = () => {
     //         .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
     //             stock: res.data().stock - cartList.find(prod => prod.id === res.id).count
     //         })))
-    //         .finally(() => EmptyCart())
+
 
     //     batch.commit()
 
